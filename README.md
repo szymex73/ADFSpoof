@@ -62,6 +62,50 @@ modules:
   {o365,dropbox,saml2,dump}
                         additional help
 ```
+
+## Installing on windows 
+
+To fix the following issue on windows hosts.
+```
+[...SNIP...]
+      build\temp.win-amd64-cpython-311\Release\_openssl.c(575): fatal error C1083: Cannot open include file: 'openssl/opensslv.h': No such file or directory
+      error: command 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX86\\x64\\cl.exe' failed with exit code 2
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for cryptography
+Failed to build cryptography
+ERROR: Could not build wheels for cryptography, which is required to install pyproject.toml-based projects
+```
+
+git clone https://github.com/openssl/openssl.git into C:\ or download zip https://github.com/openssl/openssl/archive/refs/heads/master.zip and unzip into C:\
+```
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat
+
+C:\>"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.4.4
+** Copyright (c) 2022 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x86_x64'
+
+C:\>set LIB=C:\openssl-master\apps\lib;%LIB%
+
+C:\>set INCLUDE=C:\openssl-master\apps\include;%INCLUDE%
+
+C:\>pip3 install cryptography
+Collecting cryptography
+  Downloading cryptography-39.0.0-cp36-abi3-win_amd64.whl (2.5 MB)
+     ---------------------------------------- 2.5/2.5 MB 6.5 MB/s eta 0:00:00
+Collecting cffi>=1.12
+  Using cached cffi-1.15.1-cp311-cp311-win_amd64.whl (179 kB)
+Collecting pycparser
+  Using cached pycparser-2.21-py2.py3-none-any.whl (118 kB)
+Installing collected packages: pycparser, cffi, cryptography
+Successfully installed cffi-1.15.1 cryptography-39.0.0 pycparser-2.21
+```
+
+
 ### Cryptographic Material
 
 All ADFSpoof functionality requires cryptographic material for the AD FS signing key. This can be supplied in one of two ways:
