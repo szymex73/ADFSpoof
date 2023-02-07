@@ -24,44 +24,6 @@ All requirements are captured in the repo's requirements.txt.
 
 `pip install -r requirements.txt`
 
-## Usage
-
-```
-usage: ADFSpoof.py [-h] (-b BLOB BLOB | -c CERT) [-p PASSWORD] [-v VERBOSE]
-                   [--assertionid ASSERTIONID] [--responseid RESPONSEID]
-                   [-s SERVER] [-a ALGORITHM] [-d DIGEST] [-o OUTPUT]
-                   {o365,dropbox,saml2,dump} ...
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -b BLOB BLOB, --blob BLOB BLOB
-                        Encrypted PFX blob and decryption key
-  -c CERT, --cert CERT  AD FS Signing Certificate
-  -p PASSWORD, --password PASSWORD
-                        AD FS Signing Certificate Password
-  -v VERBOSE, --verbose VERBOSE
-                        Verbose Output
-  --assertionid ASSERTIONID
-                        AssertionID string. Defaults to a random string
-  --responseid RESPONSEID
-                        The Response ID. Defaults to random string
-  -s SERVER, --server SERVER
-                        Identifier for the federation service. Usually the
-                        fqdn of the server. e.g. sts.example.com DO NOT
-                        include HTTPS://
-  -a ALGORITHM, --algorithm ALGORITHM
-                        SAML signing algorithm to use
-  -d DIGEST, --digest DIGEST
-                        SAML digest algorithm to use
-  -o OUTPUT, --output OUTPUT
-                        Write generated token to the supplied filepath
-
-modules:
-  loaded modules
-
-  {o365,dropbox,saml2,dump}
-                        additional help
-```
 
 ## Installing on windows 
 
@@ -105,6 +67,45 @@ Installing collected packages: pycparser, cffi, cryptography
 Successfully installed cffi-1.15.1 cryptography-39.0.0 pycparser-2.21
 ```
 
+
+## Usage
+
+```
+usage: ADFSpoof.py [-h] (-b BLOB BLOB | -c CERT) [-p PASSWORD] [-v VERBOSE]
+                   [--assertionid ASSERTIONID] [--responseid RESPONSEID]
+                   [-s SERVER] [-a ALGORITHM] [-d DIGEST] [-o OUTPUT]
+                   {o365,dropbox,saml2,dump} ...
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -b BLOB BLOB, --blob BLOB BLOB
+                        Encrypted PFX blob and decryption key
+  -c CERT, --cert CERT  AD FS Signing Certificate
+  -p PASSWORD, --password PASSWORD
+                        AD FS Signing Certificate Password
+  -v VERBOSE, --verbose VERBOSE
+                        Verbose Output
+  --assertionid ASSERTIONID
+                        AssertionID string. Defaults to a random string
+  --responseid RESPONSEID
+                        The Response ID. Defaults to random string
+  -s SERVER, --server SERVER
+                        Identifier for the federation service. Usually the
+                        fqdn of the server. e.g. sts.example.com DO NOT
+                        include HTTPS://
+  -a ALGORITHM, --algorithm ALGORITHM
+                        SAML signing algorithm to use
+  -d DIGEST, --digest DIGEST
+                        SAML digest algorithm to use
+  -o OUTPUT, --output OUTPUT
+                        Write generated token to the supplied filepath
+
+modules:
+  loaded modules
+
+  {o365,dropbox,saml2,dump}
+                        additional help
+```
 
 ### Cryptographic Material
 
